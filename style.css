@@ -1,0 +1,550 @@
+.body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+./* Utility class to add margin-bottom */
+.mb-3 {
+    margin-bottom: 1.5rem; /* Adding margin-bottom to create space between elements */
+}
+
+/* Styling for form labels */
+.form-label {
+    display: block; /* Displaying the label as a block element */
+    margin-bottom: 0.5rem; /* Adding margin-bottom for spacing */
+    font-size: 1rem; /* Setting a standard font size */
+    color: #333; /* Dark gray color for the text */
+}
+
+.form-label i {
+    margin-right: 0.5rem;
+    color: #06818d;  /* Icon color */
+    font-size: 0.1rem;  /* Increased icon size */
+}
+/* Container class to style input groups */
+.input-group {
+    display: flex; /* Using flexbox to layout child elements horizontally */
+    align-items: center; /* Center-aligning child elements vertically */
+    border-radius: 5rem; /* Rounded corners for a modern look */
+    /* box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.1);  */
+}
+
+/* Styling for text element within input group */
+.input-group-text {
+    display: flex; /* Using flexbox for layout */
+    align-items: center; /* Center-aligning the content vertically */
+    padding: 0.5rem 1rem; /* Adding padding for better appearance */
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left side */
+    
+    font-size: 1.5rem; /* Setting a standard font size */
+    color: #333; /* Dark gray color for the text */
+
+}
+
+/* Additional styling for rupee symbol within input group text */
+.input-group-text.rupee-symbol {
+    font-weight: bold; /* Bold font weight */
+    background-color: #06818d; /* Teal background color */
+    color: #ffffff; /* White color for the text */
+    border: none; /* Removing the border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px; /* Rounded corners on the left side */
+    font-size: 1rem; /* Setting a standard font size */
+
+}
+
+/* Styling for form controls like input fields */
+.form-control {
+    width: 100%; /* Full width to occupy parent container */
+    padding: 0.5rem 1rem; /* Adding padding for better appearance */
+    border: 0px solid #1233; /* Adding a border */
+    border-radius: 0.8rem; /* Unified rounded corners */
+    font-size: 1rem; /* Setting a standard font size */
+    color: #333; /* Dark gray color for the text */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Adding transition for smooth effect */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); Adding a subtle box shadow */
+}
+
+
+/* Styling for form control when it is focused */
+.form-control:focus {
+    border-color: #80bdff; /* Changing the border color on focus */
+    outline: none; /* Removing the default outline */
+    box-shadow: 0 0 0 0.2px rgba(75, 192, 192, 0.25); 
+}
+
+/* Container class to enclose elements in a boxed layout */
+.boxed-container {
+    background-color: #fafafa; /* Light gray background color */
+    padding: 0.8rem; /* Adding padding to create space inside the box */
+    border-radius: 0.9rem; /* Rounded corners for a modern look */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); Adding a shadow for depth */
+    margin-bottom: 20px; /* Adding margin-bottom to create space between boxes */
+}
+
+/* Hover styles for the .boxed-container element */
+.boxed-container:hover {
+    background-color: #fbfbfb; /* Change to the desired background color on hover */
+    color: #fff; /* Change text color on hover if needed */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Add a box shadow on hover */
+    transform: scale(1.01); /* Apply a scale animation on hover */
+    transition: background-color 0.3s ease, box-shadow 1s ease, transform 0.3s ease; /* Add transitions for background color, box shadow, and scale */
+}
+
+
+/* Button design */
+#CTA {
+    background-color: #06818d; /* Teal background to match the theme */
+    border: none; /* Removing the border */
+    border-radius: 0.5rem; /* Rounded corners for a modern look */
+    padding: 0.5rem 2rem; /* Generous padding for a clickable button */
+    font-size: 1.1rem; /* Font size that complements the text inside the button */
+    font-weight: 600; /* Bold font weight for better readability */
+    color: #fff; /* White font color for contrast against the background */
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+    transition: background-color 0.3s ease; /* Transition for a smooth background color change on hover */
+}
+
+#CTA:hover {
+    background-color: #8CC63E; /* A darker shade of teal for hover state */
+}
+
+#CTA:active {
+    background-color: #034f54; /* An even darker shade for active (clicked) state */
+}
+
+#CTA:focus {
+    outline: none; /* Removing the focus outline */
+    box-shadow: 0 0 5px rgba(6, 129, 141, 0.5); /* Adding a subtle box shadow to indicate focus state */
+}
+
+.form-control[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    /* background: #d9d9d9; */
+    outline: none;
+    border: 0;
+    padding: 0;
+    /* box-shadow: 0 0 2px #06818d; */
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+.form-control[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 12px;
+    
+
+}
+#totalAmountAtRetirement {
+    font-size: 1rem;
+}
+
+
+
+.form-control[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #06818d;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.form-control[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: #d9d9d9;
+    border-radius: 5px;
+}
+
+.form-control[type="range"]::-moz-range-progress {
+    background: #06818d;
+    border-radius: 5px;
+}
+
+.box {
+    background-color: #fafafa; /* or any other color that matches your design */
+    padding: 10px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+
+/* Hover styles for the .box element */
+.box:hover {
+    background-color: #ffffff; /* Change to the desired background color on hover */
+    color: #fff; /* Change text color on hover if needed */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Add a box shadow on hover */
+    transform: scale(1.01); /* Apply a scale animation on hover */
+    transition: background-color 0.3s ease, box-shadow 1s ease, transform 0.3s ease; /* Add transitions for background color, box shadow, and scale */
+}
+.form-label {
+    margin-bottom: 1.5rem;
+}
+
+
+/* + button design */
+
+.btn-secondary i {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.btn-secondary:active i {
+    color: #d9d9d9;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+    transition: background-color 0.5s ease; /* Smooth transition for hover effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+   
+}
+
+
+.btn-secondary:hover {
+    background-color: #808080;
+    transition: background-color 0.5s;  /* Smooth color transition for hover effect */
+
+}
+
+.btn i {
+    margin: 0;
+    vertical-align: middle; /* Ensures vertical centering */
+
+}
+
+/* table design */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    background-color: #f2f2f2;
+
+}
+.returnTable{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    background-color: #ffffff;
+
+}
+
+.returnTable thead {
+    background-color: #343a40; /* Dark background for a modern look */
+    border-radius: 5px; /* Adds rounded corners to the thead */
+}
+.returnTable th {
+    padding: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #495057;
+    background-color: #f8f9fa; /* Adds a light background color to the headers */
+    border-bottom: 2px solid #dee2e6; /* Adds a bottom border to distinguish the header row */
+}
+
+.returnTable td {
+    padding: 0.75rem;
+    border-bottom: 0px solid #ffffff; /* Adds a light bottom border for better separation */
+    vertical-align: middle; /* Aligns content to the middle vertically */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.returnTable tbody tr:hover {
+    background-color: #dddddd;
+}
+
+.table thead {
+    background-color: #343a40; /* Dark background for a modern look */
+    border-radius: 5px; /* Adds rounded corners to the thead */
+}
+.table th {
+    padding: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #495057;
+    background-color: #f8f9fa; /* Adds a light background color to the headers */
+    border-bottom: 2px solid #dee2e6; /* Adds a bottom border to distinguish the header row */
+}
+
+.table td {
+    padding: 0.75rem;
+    border-bottom: 0px solid #ffffff; /* Adds a light bottom border for better separation */
+    vertical-align: middle; /* Aligns content to the middle vertically */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.table tbody tr:hover {
+    background-color: #dddddd;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    background-color: #3444; /* Teal background to match the theme */
+    border: none; /* Removing the border */
+    border-radius: 0.5rem; /* Rounded corners for a modern look */
+    padding: 0.5rem 2rem; /* Generous padding for a clickable button */
+    font-size: 1.1rem; /* Font size that complements the text inside the button */
+    font-weight: 600; /* Bold font weight for better readability */
+    color: #fff; /* White font color for contrast against the background */
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+    transition: background-color 0.3s ease; /* Transition for a smooth background color change on hover */
+}
+
+
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    display: inline-flex; /* Changed to inline-flex to match + button */
+    align-items: center; /* Aligning text in the center */
+    justify-content: center; /* Centering text horizontally */
+    border-radius: 0.25rem; /* Adding a border-radius for a more modern look */
+    font-size: 1rem; /* Making sure the font size is standardized */
+    vertical-align: middle;
+}
+
+.btn-danger:hover {
+    background-color: #f7b450;
+}
+
+/* Basic styling for the button container */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Distributes the buttons evenly */
+    flex-wrap: wrap; /* Allows the buttons to wrap to the next line if necessary */
+    gap: 10px; /* Space between wrapped items */
+    
+}
+
+/* Media Query for Smaller Screens (e.g., mobile devices) */
+@media (max-width: 1024px) { /* Adjust the value based on your design's breakpoint */
+    .button-container {
+        flex-direction: column; /* Stack the buttons vertically */
+    }
+
+    .button-container .btn {
+        width: 100%; /* Make the buttons take the full width */
+        margin-bottom: 10px; /* Space between stacked buttons */
+    }
+}
+
+/* percentage % */
+output {
+    font-size: 1rem;  /* Sets a prominent font size */
+    margin-left: 0.5rem;  /* Gives space between the output and the slider */
+    color: #06818d;  /* Sets the text color to white for contrast */
+    font-weight: bolder;
+}
+
+
+/* Basic styling for the chart container */
+.chart-container {
+    width: 25rem; /* Set a default width */
+    max-width: 90vw; /* Set a maximum width relative to the viewport */
+    margin: 0 auto; /* Center the container if its parent is wider */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+.chart-title {
+    font-size: 1.5rem; /* This will be 24px, but will scale if the base size changes */
+  }
+  @media (max-width: 1024px) {
+    .chart-title {
+      font-size: 1.2rem;
+    }
+  }
+
+#InvestmentVsReturn {
+    width: 100%; /* Take the full width of its container */
+    height: auto; /* Adjust height automatically */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+  .custom-btn {
+    background: #333;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    background: linear-gradient(90deg, #06818d, #34a8a4);
+}
+
+.custom-btn i {
+    margin-right: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* General Styles */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 50%; /*2:1 aspect ratio for larger screens*/
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto !important;
+}
+
+.info-box {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-box .btn {
+    margin-top: 1rem;
+    align-items: center;
+    border-radius: 5rem;
+    width: auto;
+  }
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .info-box span {
+        font-size: 16px;
+    }
+
+    .chart-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-top: 50%; /*2:1 aspect ratio for larger screens*/
+    }
+    .info-box .btn {
+        margin-top: 1rem;
+        align-items: center;
+        border-radius: 5rem;
+        width: 50%;
+      }
+}
+
+@media (max-width: 1024px) {
+    .table td, .table th {
+      padding: 0.3rem;
+    }
+    .form-control {
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+    }
+    .input-group-text {
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  
+  @media (max-width: 1024px) {
+    h3 {
+      font-size: 1.2rem;
+    }
+    .table {
+      font-size: 0.8rem;
+    }
+  }
+  
+  .info-box .btn {
+    margin-top: 10px;
+  }
+  
+  .info-box .collapse {
+    margin-top: 10px;
+  }
+  
+  .info-box .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .info-box .table th,
+  .info-box .table td {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+    #guidanceMessage {
+    /* Background and Border Styles */
+    background-color: #f0f8ff; /* Light blue background to highlight the message */
+    border: 1px solid #06818D; /* Border with a color matching the text */
+    border-radius: 10px; /* Larger radius for more rounded corners */
+  
+    /* Box Shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a "lifted" effect */
+  
+    /* Typography */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern sans-serif font */
+    font-size: 1rem; 
+    color: #06818D; /* Text color that matches the border */
+  
+    /* Spacing */
+    padding: 15px; 
+    margin: 15px 0;
+  
+    /* Transition */
+    transition: all 0.3s ease-in-out; /* Smooth transition for all property changes */
+  }
+
+  .chart-container canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+/* 
+.left-panel {
+    margin-top: 23px;
+    width: 60%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 46px;
+
+} */
+
+.calculator-container { width: 100%; max-width: 400px; margin: 0 auto; padding: 20px; }
+.form-group { margin-bottom: 20px; }
+label { display: block; margin-bottom: 5px; }
+input[type="number"] { width: 100%; padding: 10px; font-size: 16px; margin-top: 5px; }
+.total-cost { margin-top: 20px; font-size: 20px; font-weight: bold; color: #333; }
+

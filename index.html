@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A user input form to help plan finances and retirement through finance calculator.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Finance Calculator: Learn to plan your Finance</title>
+</head>
+
+<body>
+<div class="container mt-5 offset-md-1 col-md-7">
+    <div class="logo-container" style="text-align: center; padding-bottom:20px">
+        <img src="SA-logo.jpg" alt="Logo" style="max-width: 50%; height: auto; max-height: 100px; width: auto;">
+    </div>
+
+    <h1 class="header mb-4"> Plan your Finance and Study Abroad</h1>
+    <p style="color: #06818d;"><strong>As an Indian Parent, how much should you invest to bear the {{cost_of_living_in_country}}  with ease?</strong><br></p> 
+       <p>Use our Finance Calculator to bear the <strong>{{cost_of_living_in_country}}</strong>. It's simple: enter your savings details and get a plan that covers academic and living expenses. Start today to make your child's global education dream a reality!
+       </p>
+    
+       <form style="display: flex; justify-content: space-between;">    
+      
+      <div class="mb-3 boxed-container" style="flex: 1; margin-right: 0.2rem;">
+          <label for="currentAge" class="form-label">
+              <i class="fas fa-user" style="font-size: 2rem; margin-right: 0.2rem; margin-left: 0.2rem;"></i> 
+              Current Age
+          </label>
+          <input type="number" class="form-control age" id="currentAge" value="30" placeholder="Enter your current age" min="0" onkeydown="restrictNegativeInput(event)" oninput="removeLeadingZero(this);calculateReturn()"style="font-size: 1rem;"  />
+      </div>
+      <div class="mb-3 boxed-container" style="flex: 1; margin-left: 1rem;">
+          <label for="retirementAge" class="form-label">
+              <i class="fas fa-calendar-alt" style="font-size: 2rem;margin-right: 0.5rem; margin-left: 0.5rem;"></i> 
+              Planning to save till?
+          </label>
+          <input type="number" class="form-control" id="retirementAge" value="50" placeholder="Enter your retirement age" min="0" onkeydown="restrictNegativeInput(event)" oninput="removeLeadingZero(this);calculateReturn()"style="font-size: 1rem;"  />
+      </div>
+  </form>
+    <form>   
+      <div class="mb-3 box" style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="flex: 1;">
+            <label for="annualReturn" class="form-label">Annual return rate on your Investement</label>
+            <input type="range" class="form-control" id="annualReturn" value="15" min="0.0" max="100.0" step="0.1" oninput="updateTextboxFromSliderWithPercentage('annualReturnOutput', this.value); updateSliderBackground(this);calculateReturn()" />
+        </div>
+        <input type="text" id="annualReturnOutput" style="margin-left: 20px; padding: 8px 12px; border: 2px solid #06818d; border-radius: 5px; width: 110px; text-align: center; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none;" value="15%" oninput="updateSliderFromTextboxWithPercentage('annualReturn', this.value);" onfocus="this.style.borderColor='#045a6b'; this.style.boxShadow='0 0 5px #045a6b';" onblur="this.style.borderColor='#06818d'; this.style.boxShadow='none';" />
+    </div>
+    <div class="mb-3 boxed-container">
+      <label for="lumpsumInvestment" class="form-label">Initial amount you are plannig to invest for your kid to Study Abroad?</label>
+      <div class="input-group">
+        <span class="input-group-text rupee-symbol">₹</span>
+        <input type="text" class="form-control" id="lumpsumInvestment" value="0" placeholder="Enter the initial investment amount" min="0" pattern="\d*" oninput="formatAmountIndianStyle(this);removeLeadingZero(this);calculateReturn()" />
+      </div></div>
+    <div class="mb-3 box" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="input-group" style="flex: 1;">
+          
+            <label for="monthlySIP" class="form-label">Your monthly investment until your kid is ready to Study Abroad? </label>
+            <input type="range" class="form-control" id="monthlySIP" value="5000" min="1" max="100000" oninput="updateTextboxFromSliderWithRupee('monthlySIPOutput', this.value);updateSliderBackground(this);calculateReturn()" />
+        </div>
+        <input type="text" id="monthlySIPOutput" style="margin-left: 20px; padding: 8px 12px; border: 2px solid #06818d; border-radius: 5px; width: 110px; text-align: center; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none;" value="₹5,000" oninput="updateSliderFromTextboxWithRupee('monthlySIP', this.value);formatAmountIndianStyle(this);removeLeadingZero(this);updateSliderBackground(this);calculateReturn()" onfocus="this.style.borderColor='#045a6b'; this.style.boxShadow='0 0 5px #045a6b';" onblur="this.style.borderColor='#06818d'; this.style.boxShadow='none';" />
+    </div>
+    <div class="mb-3 box" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="flex: 1;">
+          <label for="monthlyExpenses" class="form-label">Your monthly expense after you get your return?</label>
+          <input type="range" class="form-control" id="monthlyExpenses" value="50000" min="1" max="500000" oninput="updateTextboxFromSliderWithRupee('monthlyExpensesOutput', this.value); updateSliderBackground(this);calculateReturn();" />
+      </div>
+      <input type="text" id="monthlyExpensesOutput" style="margin-left: 20px; padding: 8px 12px; border: 2px solid #06818d; border-radius: 5px; width: 110px; text-align: center; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none;" value="₹50,000" oninput="updateSliderFromTextboxWithRupee('monthlyExpenses', this.value);formatAmountIndianStyle(this);removeLeadingZero(this);updateSliderBackground(this);calculateReturn()" onfocus="this.style.borderColor='#045a6b'; this.style.boxShadow='0 0 5px #045a6b';" onblur="this.style.borderColor='#06818d'; this.style.boxShadow='none';" />
+     </div>
+  
+    <!-- <div class="mb-3 boxed-container">
+      <label for="monthlySIP" class="form-label">What is the monthly investment you are going to make, until your retirement age?</label>
+      <div class="input-group">
+        <span class="input-group-text rupee-symbol">₹</span>
+        <input type="text" class="form-control" placeholder="Monthly SIP Today" id="monthlySIP" value="30,000" min="0" pattern="\d*" oninput="formatCurrency(this);removeLeadingZero(this);calculateReturn()" />
+      </div>
+    </div> -->
+           
+    <!-- <div class="mb-3 boxed-container">
+      <label for="monthlyExpenses" class="form-label">How much do you want to spend monthly when you retire?</label>
+      <div class="input-group">
+          <span class="input-group-text rupee-symbol">₹</span>
+          <input type="text" class="form-control" id="monthlyExpenses" value="50,000" placeholder="Enter monthly expenses" min="1" pattern="\d*" oninput="formatCurrency(this);removeLeadingZero(this);calculateReturn()" onblur="checkZeroValue(this);" />
+      </div>
+  </div> -->
+
+  </form>
+<!-- Assumptions section (initially hidden) -->
+<div id="assumptionsSection" style="display: none;">
+    <h2>Assumptions</h2><br>
+
+    <div class="mb-3 box" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="flex: 1;">
+        <label for="increaseEveryYear" class="form-label">How much extra do you plan to add to your monthly investment each year? </label>
+        <input type="range" class="form-control" id="annualSIPChange" value="5.0" min="0.0" max="100.0" step="0.1" oninput="updateTextboxFromSliderWithPercentage('annualSIPChangeOutput', this.value); updateSliderBackground(this);calculateReturn()" />
+      </div>
+      <input type="text" id="annualSIPChangeOutput" style="margin-left: 20px; padding: 8px 12px; border: 2px solid #06818d; border-radius: 5px; width: 110px; text-align: center; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none;" value="5%" oninput="updateSliderFromTextboxWithPercentage('annualSIPChange', this.value);" onfocus="this.style.borderColor='#045a6b'; this.style.boxShadow='0 0 5px #045a6b';" onblur="this.style.borderColor='#06818d'; this.style.boxShadow='none';" />
+  </div>
+
+  <div class="mb-3 box" style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="flex: 1;">
+      <label for="inflation" class="form-label">What is your estimated annual inflation rate?</label>
+      <input type="range" class="form-control" id="annualInflation" value="6.0" min="0.0" max="100.0" step="0.1" oninput="updateTextboxFromSliderWithPercentage('annualInflationOutput', this.value); updateSliderBackground(this);calculateReturn()" />
+    </div>
+    <input type="text" id="annualInflationOutput" style="margin-left: 20px; padding: 8px 12px; border: 2px solid #06818d; border-radius: 5px; width: 110px; text-align: center; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none;" value="6%" oninput="updateSliderFromTextboxWithPercentage('annualInflation', this.value);" onfocus="this.style.borderColor='#045a6b'; this.style.boxShadow='0 0 5px #045a6b';" onblur="this.style.borderColor='#06818d'; this.style.boxShadow='none';" />
+</div>
+
+<div class="mb-3 box" style="display: flex; justify-content: space-between; align-items: center;">
+  <div style="flex: 1;">
+    <label for="expectedIncrease" class="form-label">By what percentage do you expect your yearly expenses to grow once you get your return?</label>
+    <input type="range" class="form-control" id="expectedIncrease" value="3.0" min="0.0" max="100.0" step="0.1" oninput="updateTextboxFromSliderWithPercentage('expectedIncreaseOutput', this.value); updateSliderBackground(this);calculateReturn()" />
+  </div>
+
+  <input type="text" id="expectedIncreaseOutput" style="margin-left: 20px; padding: 8px 12px; border: 2px solid #06818d; border-radius: 5px; width: 110px; text-align: center; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none;" value="6%" oninput="updateSliderFromTextboxWithPercentage('expectedIncrease', this.value);" onfocus="this.style.borderColor='#045a6b'; this.style.boxShadow='0 0 5px #045a6b';" onblur="this.style.borderColor='#06818d'; this.style.boxShadow='none';" />
+</div>
+
+</div>
+
+<!-- Section to be hidden initially -->
+<div id="hiddenSection" style="display: none;">
+    <!-- Your provided content here -->
+    <div class="mb-3"><br>
+      <h3>Your Needs, Wants, and Other Grand Illusions</h3><br>
+      <p>Outline your financial milestones for your journey ahead — how much do you plan to allocate for your education and living expenses at different phases of your study abroad experience?</p>
+    <p><strong>NOTE:</strong> You can enter expenses at different ages of your life and get your calculation accordingly. </p>
+      <!-- <label class="form-label">Your Need/ Want Post Retirement</label> -->
+        <table class="table" id="expensesTable">
+          <thead>
+            <tr>
+              <th>Expenses</th>
+              <th>At Age</th>
+              <th>Amount Needed</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" placeholder="Tution Fee"></td>
+              <td><input type="number" class="form-control age" value=" " oninput="removeLeadingZero(this);calculateReturn()"></td>
+              <td>
+                <div class="input-group">
+                  <span class="input-group-text rupee-symbol">₹</span>
+                  <input type="text" class="form-control amount-needed" value="0" pattern="\d*" oninput="formatAmountIndianStyle(this);removeLeadingZero(this);calculateReturn()">
+                </div>
+              </td>
+              <td><button type="button" class="btn btn-danger" title="Remove this Row"  onclick="removeRow(this);calculateReturn()"><i class="fas fa-minus"></i></button></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" placeholder="Accomodation"></td>
+              <td><input type="number" class="form-control age" value=" " oninput="removeLeadingZero(this);calculateReturn()" ></td>
+              <td>
+                <div class="input-group">
+                  <span class="input-group-text rupee-symbol">₹</span>
+                  <input type="text" class="form-control amount-needed" value="0" pattern="\d*" oninput="formatAmountIndianStyle(this);removeLeadingZero(this);calculateReturn()">
+                </div>
+              </td>
+              <td><button type="button" class="btn btn-danger" title="Remove this Row"  onclick="removeRow(this);calculateReturn()"><i class="fas fa-minus"></i></button></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" placeholder="Food and Grocery"></td>
+              <td><input type="number" class="form-control age" value=" " oninput="removeLeadingZero(this);calculateReturn()" ></td>
+              <td>
+                <div class="input-group">
+                  <span class="input-group-text rupee-symbol">₹</span>
+                  <input type="text" class="form-control amount-needed" value="0" pattern="\d*" oninput="formatAmountIndianStyle(this);removeLeadingZero(this);calculateReturn()">
+                </div>
+              </td>
+              <td><button type="button" class="btn btn-danger" title="Remove this Row"  onclick="removeRow(this);calculateReturn()"><i class="fas fa-minus"></i></button></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" placeholder="Other Expense"></td>
+              <td><input type="number" class="form-control age" value=" " oninput="removeLeadingZero(this);calculateReturn()" ></td>
+              <td>
+                <div class="input-group">
+                  <span class="input-group-text rupee-symbol">₹</span>
+                  <input type="text" class="form-control amount-needed" value="0" pattern="\d*" oninput="formatAmountIndianStyle(this);removeLeadingZero(this);calculateReturn()">
+                </div>
+              </td>
+              <td><button type="button" class="btn btn-danger" title="Remove this Row"  onclick="removeRow(this);calculateReturn()"><i class="fas fa-minus"></i></button></td>
+            </tr>
+        
+          </tbody>
+         </table>
+        <button type="button" class="btn btn-secondary" title="Add a New Row" onclick="addRow();calculateReturn()">
+            <i class="fas fa-plus"></i>
+        </button>
+        </div></div><br>
+        <div class="mb-3 button-container">
+          <!-- Primary Button -->
+          <!-- <a href="#resultsContainer">
+              <button type="button" class="btn btn-primary" id="calculateButton" onclick="calculateReturn()">Calculate Return</button>
+          </a> -->
+  
+          <!-- Second Button (replace with your actual button) -->
+             <!-- Button to toggle the visibility of the assumptions section -->
+             <a href="#assumptionsSection">
+              <button type="button" class="btn btn-secondary" id="toggleAssumptions" onclick="toggleVisibility('assumptionsSection')">Assumptions</button>
+            </a>
+          <!-- Third Button (replace with your actual button) -->
+              <!-- Button to toggle the visibility of the section -->
+          <a href="#hiddenSection">
+              <button type="button" class="btn btn-secondary" id="toggleSection" onclick="toggleVisibility('hiddenSection')">Add Expenses</button>
+          </a>
+          <a href="https://www.shiksha.com/online-courses/finance-courses-certification-training-ct133?utm_source=articles&utm_medium=organic&utm_campaign=content&utm_content=cta">
+            <button type="button" class="btn btn-primary" id="CTA">Recommended Finance Courses</button>
+        </a>
+          </div>
+        <div id="resultsContainer" style="display: none;">
+        <div class="mb-3 chart-container">
+          <canvas id="InvestmentVsReturn" width="1200" height="1200"></canvas>
+        </div>
+        <div class="mb-3">
+          <p>
+              After investing <strong>₹<span id="investmentAmount"></span></strong> for <strong><span id="duration"></span> years</strong>, and achieving a <strong><span id="return"></span>%</strong> annual return, you will earn a total return of about <strong>₹<span id="totalReturn"></span></strong>. We've used a <strong><span id="inflation"></span>%</strong> inflation rate for this.
+      </div>
+      <div id="guidanceMessage" class="fadeIn" style="display: block; color: #06818D; font-size: 1rem;">
+       <strong>💡 Tip:</strong>  You can change the inflation rate in the <strong>'Assumptions'</strong> section.
+      </div>
+    </div>
+            
+        <div class="mb-3"><br>
+          <h3>Total amount you will get after saving till <strong><span id="retirementYear"></span>:</strong></h3>
+          <label for="totalAmountAtRetirement" class="form-label"></label>
+          <div class="input-group">
+            <span class="input-group-text rupee-symbol">₹</span>
+            <input type="text" class="form-control" id="totalAmountAtRetirement" readonly>
+            
+          </div>
+        </div>
+          </form>
+        
+          <div class="mb-5 mt-5 chart-container">
+            <canvas id="returnChart" width="1200" height="700"></canvas>
+        </div>
+        <div><br><br></div>
+        <div class="mb-5">
+          <label for="years" class="form-label">Based on your monthly expenses, your saved amount will last around <strong><span id="years"></span> years</strong> after investing till <strong><span id="retirementYear1"></span></strong>.</label>
+          <!-- <input type="text" class="form-control" id="years" readonly> -->
+          </div>
+        <div class="mb-5 chart-container">
+            <canvas id="depreciationChart" width="1200px" height="700"></canvas>
+        </div>
+        <div class="mb-5 mt-3 info-box">
+            <span>Check the detailed month on month Return Calculation</span>
+            <button class="btn custom-btn" data-bs-toggle="collapse" data-bs-target="#collapseTable" onclick="toggleCollapse();formatTableCurrency(this)" aria-expanded="false" aria-controls="collapseTable" title="Toggle Return Calculation Details">
+                <i class="fas fa-chevron-down"></i> View Details
+            </button>
+        </div>
+        </div>
+        
+
+       <div class="collapse" id="collapseTable">
+      <table class="returnTable" id="resultsTable">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Amount</th>
+            <th>Return</th>
+            <th>Total Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Results will be displayed here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
